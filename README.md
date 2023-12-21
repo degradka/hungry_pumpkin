@@ -28,7 +28,7 @@ Contributions are welcome! Whether you're fixing a bug, enhancing features, or j
 
 ## License
 
-This project is licensed under the [GNU General Public License v3.0](LICENSE.md) - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the [GNU General Public License v3.0](LICENSE) - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
