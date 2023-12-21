@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1ma0gcaf63w0"]
+
+[ext_resource type="Script" path="res://scripts/food.gd" id="1_3ak1l"]
+[ext_resource type="Texture2D" uid="uid://srv74lmc8ppq" path="res://assets/food/salt_sprite.png" id="2_o5ssh"]
+[ext_resource type="Texture2D" uid="uid://ce26duhbldvy3" path="res://assets/arrow/arrow-sheet.png" id="3_u2lcn"]
+[ext_resource type="Script" path="res://scripts/arrow.gd" id="4_uv48m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cd3dv"]
+size = Vector2(26, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dv77"]
+atlas = ExtResource("3_u2lcn")
+region = Rect2(0, 0, 33, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk8a0"]
+atlas = ExtResource("3_u2lcn")
+region = Rect2(33, 0, 33, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wljd3"]
+atlas = ExtResource("3_u2lcn")
+region = Rect2(66, 0, 33, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2svt"]
+atlas = ExtResource("3_u2lcn")
+region = Rect2(99, 0, 33, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcit7"]
+atlas = ExtResource("3_u2lcn")
+region = Rect2(132, 0, 33, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7evl"]
+atlas = ExtResource("3_u2lcn")
+region = Rect2(165, 0, 33, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7xxje"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dv77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk8a0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wljd3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2svt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcit7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7evl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Salt" type="Node2D"]
+position = Vector2(246, 141)
+scale = Vector2(1.7, 1.7)
+script = ExtResource("1_3ak1l")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Area"]
+texture = ExtResource("2_o5ssh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2(6, -2)
+shape = SubResource("RectangleShape2D_cd3dv")
+
+[node name="Arrow" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(4, -29)
+rotation = -3.08924
+scale = Vector2(0.5, 0.4)
+sprite_frames = SubResource("SpriteFrames_7xxje")
+autoplay = "default"
+script = ExtResource("4_uv48m")

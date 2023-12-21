@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6gy7ii37rm6f"]
+
+[ext_resource type="Script" path="res://global/audio_manager.gd" id="1_3u45x"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_3u45x")
+
+[node name="FoodSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="PumpkinSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="GameSFX" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="finished" from="PumpkinSFX" to="." method="_on_pumpkin_sfx_finished"]
