@@ -1,5 +1,7 @@
 extends Node2D
 
+# Declare onready variables for various game elements
+
 @onready var foreground = $Level/Foreground
 
 @onready var camera = $Camera
@@ -21,8 +23,12 @@ extends Node2D
 @onready var plate = $Level/Foreground/Top/FoodChoice/Plate
 @onready var mouth = $Level/Foreground/Top/FoodChoice/Mouth
 
+# Constants for positions
+
 const BAR_POS: Vector2 = Vector2(350.0, 285.0) # min 280, intially 250 (but bar top is visible which is meh)
 const RESTAURANT_POS: Vector2 = Vector2(350.0, -160.0)
+
+# Game state variables
 
 var game_started = false
 var food_names = ["hamburger", "pizza", "sandwich", "hotdog", "fries", "eggs", "chicken", "butter", "cheese", "bread", "rice", "noodles", "salt", "pepper", "fish", "jam", "icewater", "orangejuice", "soda", "coffee"]
@@ -31,7 +37,7 @@ var head_anim = ""
 var game_count = 0
 var is_fullscreen: bool = false
 
-func set_globals_to_default():
+func set_default_global_values():
 	Global.is_hovering = false
 	Global.score = 0
 	Global.is_bar = true
@@ -44,7 +50,7 @@ func set_globals_to_default():
 	Global.random_food_list = []
 
 func _ready():
-	set_globals_to_default()
+	set_default_global_values()
 	AudioManager.connect("talk_finished", outro)
 	walker.hide()
 	score_label.text = str(Global.score)
@@ -56,12 +62,15 @@ func make_random_list() -> Array:
 	
 	return shuffled_list
 
+# Function to update the cursor based on user interaction
 func update_cursor():
 	if !Global.is_hovering:
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	else:
 		Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
+# Function to switch the view between bar and restaurant
+# Only used once tho, might rename it or simplify, maybe even remove :O
 func change_view():
 	if Global.is_bar:
 		Global.is_bar = false
@@ -97,6 +106,7 @@ func _process(_delta):
 			elif user_pick != Global.ordered:
 				handle_incorrect_food(user_pick)
 
+# Event handler for walker's animation player
 func _on_animation_player_animation_finished(anim_name):
 	match anim_name:
 		"intro":
@@ -124,6 +134,7 @@ func add_score() -> void:
 	score_label.text = str(Global.score)
 	pumpkin_head.scale += Vector2(0.0075, 0.0075)
 
+# Function to serve a single food item
 func serve_one(food, slot) -> void:	
 	var food_scene = ResourceLoader.load("res://scenes/food/" + food + ".tscn")
 	var food_instance = food_scene.instantiate()
@@ -140,6 +151,7 @@ func serve_one(food, slot) -> void:
 	
 	served.append(food)
 
+# Function to serve a set of food items
 func serve() -> void:
 	var i = 1
 	while i <= 4:
@@ -149,6 +161,7 @@ func serve() -> void:
 	Global.can_pick = false
 	after_serve()
 
+# Function called after serving food
 func after_serve() -> void:
 	Global.ordered = served.pick_random()
 	AudioManager.play_giveme_sound(Global.ordered)
@@ -156,12 +169,14 @@ func after_serve() -> void:
 	head_anim = "order"
 	Global.game_state = "choice"
 
+# Function called when Mr. Pumpkin says "No. >:O"
 func try_again() -> void:
 	AudioManager.play_giveme_sound(Global.ordered)
 	pumpkin_head.play("order")
 	head_anim = "order"
 	Global.game_state = "choice"
 
+# Function to handle correct food selection by the player
 func handle_correct_food(user_pick):
 	Global.can_pick = false
 	Global.ordered = ""
@@ -173,6 +188,8 @@ func handle_correct_food(user_pick):
 		food = "IceWater"
 	
 	food = foreground.get_node_or_null(food)
+	# For some reason this function is sometimes being called multiple times
+	# Causing game breaking bugs, so I had to make a check
 	if food == null:
 		return
 	
@@ -186,6 +203,7 @@ func handle_correct_food(user_pick):
 		food.move_to_mouth()
 		served.erase(user_pick)
 
+# Function to handle incorrect food selection by the player
 func handle_incorrect_food(user_pick):
 	Global.can_pick = false
 	var food = user_pick.capitalize()
@@ -196,6 +214,7 @@ func handle_incorrect_food(user_pick):
 		food = "IceWater"
 	
 	food = foreground.get_node_or_null(food)
+	# Same here as in previous 'handle_correct_food' function
 	if food == null:
 		return
 	
@@ -210,6 +229,7 @@ func handle_incorrect_food(user_pick):
 		food.move_to_trash()
 		served.erase(user_pick)
 
+# Function to handle the ending of the game
 func ending():
 	Global.game_state = "end"
 	Global.is_no = true
@@ -223,11 +243,15 @@ func ending():
 	else:
 		AudioManager.play_pumpkin_sound("fantastic")
 
+# Function to handle the outro animation, called after Mr. Pumpkin
+# Finishes talking in the end
 func outro():
 	pumpkin.hide()
 	walker_anim.play("end")
 	Global.can_pick = false
 
+# Event handler for head animation, it's funny to me that 
+# Almost the most important logic is in this function
 func _on_head_animation_finished():
 	if head_anim == "eat":
 		head_anim = ""
