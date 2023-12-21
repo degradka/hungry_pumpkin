@@ -59,11 +59,11 @@ animations = [{
 }]
 
 [node name="Salt" type="Node2D"]
-position = Vector2(246, 141)
 scale = Vector2(1.7, 1.7)
 script = ExtResource("1_3ak1l")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -15)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_o5ssh")
@@ -72,7 +72,7 @@ texture = ExtResource("2_o5ssh")
 position = Vector2(6, -2)
 shape = SubResource("RectangleShape2D_cd3dv")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(4, -29)
 rotation = -3.08924

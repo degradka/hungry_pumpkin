@@ -678,7 +678,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8nqyf")
 }, {
-"duration": 3.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_pwkm8")
 }, {
 "duration": 1.0,
@@ -704,22 +704,22 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_onn38")
 }, {
-"duration": 2.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_bp4a0")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5igmw")
 }, {
-"duration": 2.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_o7ren")
 }, {
-"duration": 2.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_6pc0d")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5474u")
 }, {
-"duration": 2.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_m6xu3")
 }, {
 "duration": 1.0,
@@ -757,7 +757,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0w8ge")
 }],
-"loop": false,
+"loop": true,
 "name": &"talk",
 "speed": 5.0
 }]
@@ -804,7 +804,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"eat",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -826,7 +826,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"no",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="Animation" id="Animation_vy02h"]
@@ -980,7 +980,7 @@ scale = Vector2(0.08, 0.08)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Level/Street/Walker"]
 sprite_frames = SubResource("SpriteFrames_t5iyw")
-animation = &"happy_idle"
+animation = &"happy_walk"
 autoplay = "happy_walk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Level/Street/Walker"]
@@ -1057,14 +1057,13 @@ texture = ExtResource("11_woxkr")
 position = Vector2(-7, -111)
 scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_3hwyd")
-animation = &"idle"
-autoplay = "talk"
+animation = &"talk"
 
 [node name="HandLeft" type="AnimatedSprite2D" parent="Level/Foreground/Pumpkin"]
 z_index = 1
 position = Vector2(112, 0)
 sprite_frames = SubResource("SpriteFrames_4doj7")
-animation = &"eat"
+animation = &"no"
 
 [node name="HandRight" type="Sprite2D" parent="Level/Foreground/Pumpkin"]
 z_index = 1
@@ -1079,16 +1078,16 @@ centered = false
 [node name="FoodChoice" type="Node2D" parent="Level/Foreground/Top"]
 
 [node name="Slot01" type="Marker2D" parent="Level/Foreground/Top/FoodChoice"]
-position = Vector2(168, 152)
+position = Vector2(168, 160)
 
 [node name="Slot02" type="Marker2D" parent="Level/Foreground/Top/FoodChoice"]
-position = Vector2(296, 129)
+position = Vector2(296, 140)
 
 [node name="Slot03" type="Marker2D" parent="Level/Foreground/Top/FoodChoice"]
-position = Vector2(442, 127)
+position = Vector2(442, 140)
 
 [node name="Slot04" type="Marker2D" parent="Level/Foreground/Top/FoodChoice"]
-position = Vector2(607, 148)
+position = Vector2(607, 160)
 
 [node name="Plate" type="Marker2D" parent="Level/Foreground/Top/FoodChoice"]
 position = Vector2(400, 38)
@@ -1110,30 +1109,42 @@ texture = ExtResource("9_7oxyb")
 [node name="FoodFloor" type="Node2D" parent="Level/Foreground"]
 
 [node name="Rice" parent="Level/Foreground/FoodFloor" instance=ExtResource("19_0trtt")]
+position = Vector2(121, 447)
 
 [node name="Bread" parent="Level/Foreground/FoodFloor" instance=ExtResource("20_n5df0")]
+position = Vector2(262, 397)
 
 [node name="Chicken" parent="Level/Foreground/FoodFloor" instance=ExtResource("21_c0387")]
+position = Vector2(315, 456)
 
 [node name="Noodles" parent="Level/Foreground/FoodFloor" instance=ExtResource("22_4qyr0")]
+position = Vector2(423, 421)
 
 [node name="Cheese" parent="Level/Foreground/FoodFloor" instance=ExtResource("23_eu2ho")]
+position = Vector2(554, 450)
 
 [node name="FoodBottom" type="Node2D" parent="Level/Foreground"]
 
 [node name="Eggs" parent="Level/Foreground/FoodBottom" instance=ExtResource("24_8htso")]
+position = Vector2(74, 369)
 
 [node name="Coffee" parent="Level/Foreground/FoodBottom" instance=ExtResource("25_w0ujn")]
+position = Vector2(163, 338)
 
 [node name="Pizza" parent="Level/Foreground/FoodBottom" instance=ExtResource("26_wmeh6")]
+position = Vector2(281, 321)
 
 [node name="Soda" parent="Level/Foreground/FoodBottom" instance=ExtResource("27_s7axm")]
+position = Vector2(374, 317)
 
 [node name="Fish" parent="Level/Foreground/FoodBottom" instance=ExtResource("28_mhlgs")]
+position = Vector2(479, 317)
 
 [node name="OrangeJuice" parent="Level/Foreground/FoodBottom" instance=ExtResource("29_bsit5")]
+position = Vector2(603, 364)
 
 [node name="IceWater" parent="Level/Foreground/FoodBottom" instance=ExtResource("30_b64e5")]
+position = Vector2(657, 392)
 
 [node name="Shelve" type="Sprite2D" parent="Level/Foreground"]
 texture_filter = 1
@@ -1144,25 +1155,35 @@ centered = false
 [node name="FoodTop" type="Node2D" parent="Level/Foreground"]
 
 [node name="Hamburger" parent="Level/Foreground/FoodTop" instance=ExtResource("32_4jsfa")]
+position = Vector2(384, 174)
 
 [node name="Hotdog" parent="Level/Foreground/FoodTop" instance=ExtResource("33_fspx8")]
+position = Vector2(552, 187)
 
 [node name="Fries" parent="Level/Foreground/FoodTop" instance=ExtResource("34_uhgc0")]
+position = Vector2(452, 195)
 
 [node name="Jam" parent="Level/Foreground/FoodTop" instance=ExtResource("35_u58g3")]
+position = Vector2(611, 230)
 
 [node name="Salt" parent="Level/Foreground/FoodTop" instance=ExtResource("36_m6nic")]
+position = Vector2(247, 166)
 
 [node name="Pepper" parent="Level/Foreground/FoodTop" instance=ExtResource("37_8es8h")]
+position = Vector2(200, 176)
 
 [node name="Butter" parent="Level/Foreground/FoodTop" instance=ExtResource("38_8ob46")]
+position = Vector2(265, 203)
 
 [node name="Sandwich" parent="Level/Foreground/FoodTop" instance=ExtResource("39_dynjk")]
+position = Vector2(105, 216)
 
 [node name="Camera" type="Camera2D" parent="."]
+z_index = 3
 position = Vector2(350, 285)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
+editor_draw_limits = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -1196,8 +1217,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -78.0
-offset_right = 4200.0
-offset_bottom = 2922.0
+offset_right = 5600.0
+offset_bottom = 3922.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

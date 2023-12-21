@@ -9,23 +9,30 @@ signal talk_finished
 func _ready() -> void:
 	randomize()
 
-func play_food_sound(food):
-	var audio_path = "res://assets/food/" + food.to_lower() + "_audio.mp3"
+func play_sound(player, path, sound):
+	var audio_path = "res://assets/" + path + "/" + sound.to_lower() + "_audio.mp3"
 	var audio_stream = ResourceLoader.load(audio_path)
 	
 	if audio_stream:
-		play(food_sfx, audio_stream)
+		play(player, audio_stream)
 	else:
 		print("Audio file not found: ", audio_path)
 
-func play_pumpkin_sound(sound):
-	var audio_path = "res://assets/pumpkin/audio/pumpkin_" + sound.to_lower() + "_audio.mp3"
-	var audio_stream = ResourceLoader.load(audio_path)
-	
-	if audio_stream:
-		play(pumpkin_sfx, audio_stream)
+func play(player, audio_stream):
+	if player != null:
+		player.stream = audio_stream
+		player.play()
 	else:
-		print("Audio file not found: ", audio_path)
+		print("Audio player not found: " + player)
+
+func play_food_sound(food):
+	play_sound(food_sfx, "food", food)
+
+func play_game_sound(sound):
+	play_sound(game_sfx, "audio", sound)
+
+func play_pumpkin_sound(sound):
+	play_sound(pumpkin_sfx, "pumpkin/audio", "pumpkin_" + sound.to_lower())
 
 func play_giveme_sound(food):
 	var random_int = randi_range(1, 3)
@@ -39,6 +46,9 @@ func play_giveme_sound(food):
 		
 	await pumpkin_sfx.finished
 	
+	if Global.is_no:
+		return
+	
 	audio_path = "res://assets/pumpkin/food_audio/pumpkin_" + food.to_lower() + "_audio.mp3"
 	audio_stream = ResourceLoader.load(audio_path)
 	
@@ -46,25 +56,6 @@ func play_giveme_sound(food):
 		play(pumpkin_sfx, audio_stream)
 	else:
 		print("Audio file not found: ", audio_path)
-
-func pumpkin_sfx_finished():
-	pass
-
-func play_game_sound(sound):
-	var audio_path = "res://assets/audio/" + sound.to_lower() + "_audio.mp3"
-	var audio_stream = ResourceLoader.load(audio_path)
-	
-	if audio_stream:
-		play(game_sfx, audio_stream)
-	else:
-		print("Audio file not found: ", audio_path)
-
-func play(type, audio_stream):
-	if type != null:
-		type.stream = audio_stream
-		type.play()
-	else:
-		print("Audio type not found: " + type)
 
 func _on_pumpkin_sfx_finished():
 	if Global.game_state == "end":

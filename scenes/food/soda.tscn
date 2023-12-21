@@ -59,11 +59,11 @@ animations = [{
 }]
 
 [node name="Soda" type="Node2D"]
-position = Vector2(372, 284)
 scale = Vector2(1.2, 1.2)
 script = ExtResource("1_2wq41")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -27)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_wdntl")
@@ -72,7 +72,7 @@ texture = ExtResource("2_wdntl")
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_ul8l0")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(-35, 0)
 rotation = 1.5708

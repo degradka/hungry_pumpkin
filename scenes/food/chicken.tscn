@@ -59,11 +59,11 @@ animations = [{
 }]
 
 [node name="Chicken" type="Node2D"]
-position = Vector2(314, 439)
 scale = Vector2(1.6, 1.6)
 script = ExtResource("1_mg344")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -10)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_gle6i")
@@ -72,7 +72,7 @@ texture = ExtResource("2_gle6i")
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_c03ep")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(-55, 0)
 rotation = 1.5708

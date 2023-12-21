@@ -59,11 +59,11 @@ animations = [{
 }]
 
 [node name="Bread" type="Node2D"]
-position = Vector2(260, 391)
 scale = Vector2(1.6, 1.6)
 script = ExtResource("1_ooe4t")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -4)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_nsais")
@@ -73,7 +73,7 @@ rotation = -0.314159
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_2w00g")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(-37, 8)
 rotation = 1.36136

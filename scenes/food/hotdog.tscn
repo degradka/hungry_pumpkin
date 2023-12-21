@@ -60,11 +60,11 @@ animations = [{
 }]
 
 [node name="Hotdog" type="Node2D"]
-position = Vector2(551, 177)
 scale = Vector2(2.25, 2.25)
 script = ExtResource("1_svwoj")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -5)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_xa5gw")
@@ -73,7 +73,7 @@ texture = ExtResource("2_xa5gw")
 rotation = 0.785398
 shape = SubResource("CapsuleShape2D_68ekr")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(-17, -17)
 rotation = 2.26893

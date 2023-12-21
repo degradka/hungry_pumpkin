@@ -62,11 +62,11 @@ animations = [{
 }]
 
 [node name="Pepper" type="Node2D"]
-position = Vector2(199, 151)
 scale = Vector2(1.65, 1.65)
 script = ExtResource("1_sb8a7")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -15)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_67sir")
@@ -79,7 +79,7 @@ shape = SubResource("RectangleShape2D_ci14t")
 position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_dgxb5")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(3, -27)
 rotation = 3.14159

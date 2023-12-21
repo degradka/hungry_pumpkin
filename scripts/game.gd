@@ -31,7 +31,20 @@ var head_anim = ""
 var game_count = 0
 var is_fullscreen: bool = false
 
+func set_globals_to_default():
+	Global.is_hovering = false
+	Global.score = 0
+	Global.is_bar = true
+	Global.game_state = "bar"
+	Global.ordered = ""
+	Global.user_pick = ""
+	Global.can_pick = false
+	Global.is_no = false
+
+	Global.random_food_list = []
+
 func _ready():
+	set_globals_to_default()
 	AudioManager.connect("talk_finished", outro)
 	walker.hide()
 	score_label.text = str(Global.score)
@@ -53,9 +66,6 @@ func change_view():
 	if Global.is_bar:
 		Global.is_bar = false
 		camera.position = RESTAURANT_POS
-	else:
-		Global.is_bar = true
-		camera.position = BAR_POS
 
 func fullscreen_toggle():
 	if is_fullscreen:
@@ -79,21 +89,20 @@ func _process(_delta):
 		fullscreen_toggle()
 	
 	if Global.game_state == "choice":
-		if Global.user_pick != "":
+		if Global.user_pick != "" and Global.ordered != "":
 			var user_pick = Global.user_pick
-			if Global.user_pick == Global.ordered:
+			Global.user_pick = ""
+			if user_pick == Global.ordered:
 				handle_correct_food(user_pick)
-				Global.user_pick = ""
-			elif Global.user_pick != Global.ordered:
+			elif user_pick != Global.ordered:
 				handle_incorrect_food(user_pick)
-				Global.user_pick = ""
 
 func _on_animation_player_animation_finished(anim_name):
 	match anim_name:
 		"intro":
 			walker.hide()
 			game_start()
-		"outro":
+		"end":
 			await get_tree().create_timer(3).timeout
 			get_tree().reload_current_scene()
 
@@ -101,7 +110,8 @@ func walker_play_sound():
 	AudioManager.play_pumpkin_sound("imveryhungry")
 
 func game_start():
-	car.start_timer()
+	car.start_animation_timer()
+	pumpkin_head.scale = Vector2(0.85, 0.85)
 	pumpkin.show()
 	score_animation.play("show")
 	Global.can_pick = false
@@ -112,6 +122,7 @@ func add_score() -> void:
 	AudioManager.play_game_sound("score")
 	score_animation.play("score")
 	score_label.text = str(Global.score)
+	pumpkin_head.scale += Vector2(0.0075, 0.0075)
 
 func serve_one(food, slot) -> void:	
 	var food_scene = ResourceLoader.load("res://scenes/food/" + food + ".tscn")
@@ -121,7 +132,7 @@ func serve_one(food, slot) -> void:
 	
 	foreground.add_child(food_instance)
 	food_instance.position = starting_point.global_position
-	#food_instance.scale = food_instance.scale * 0.5
+	food_instance.z_index += 1
 	
 	var tween = create_tween()
 	
@@ -152,6 +163,8 @@ func try_again() -> void:
 	Global.game_state = "choice"
 
 func handle_correct_food(user_pick):
+	Global.can_pick = false
+	Global.ordered = ""
 	var food = user_pick.capitalize()
 
 	if user_pick == "orange_juice" or user_pick == "orangejuice":
@@ -159,20 +172,22 @@ func handle_correct_food(user_pick):
 	elif user_pick == "ice_water" or user_pick == "icewater":
 		food = "IceWater"
 	
-	food = foreground.get_node(food)
+	food = foreground.get_node_or_null(food)
+	if food == null:
+		return
 	
-	Global.can_pick = false
 	await get_tree().create_timer(0.4).timeout
 	pumpkin_hand_left.play("eat")
 	pumpkin_head.play("eat")
 	head_anim = "eat"
 	AudioManager.play_pumpkin_sound("eat")
 	
-	food.move_to_mouth()
-	served.erase(user_pick)
-	Global.ordered = ""
+	if food != null:
+		food.move_to_mouth()
+		served.erase(user_pick)
 
 func handle_incorrect_food(user_pick):
+	Global.can_pick = false
 	var food = user_pick.capitalize()
 
 	if user_pick == "orangejuice":
@@ -180,20 +195,24 @@ func handle_incorrect_food(user_pick):
 	elif user_pick == "icewater":
 		food = "IceWater"
 	
-	food = foreground.get_node(food)
+	food = foreground.get_node_or_null(food)
+	if food == null:
+		return
 	
-	Global.can_pick = false
 	await get_tree().create_timer(0.4).timeout
 	pumpkin_hand_left.play("no")
 	pumpkin_head.play("no")
 	head_anim = "no"
+	Global.is_no = true
 	AudioManager.play_pumpkin_sound("noidontwantthat")
 	
-	food.move_to_trash()
-	served.erase(user_pick)
+	if food != null:
+		food.move_to_trash()
+		served.erase(user_pick)
 
 func ending():
 	Global.game_state = "end"
+	Global.is_no = true
 	pumpkin_head.play("talk")
 	if Global.score < 7:
 		AudioManager.play_pumpkin_sound("terrible")
@@ -227,6 +246,7 @@ func _on_head_animation_finished():
 	elif head_anim == "no":
 		head_anim = ""
 		Global.can_pick = true
+		Global.is_no = false
 		pumpkin_hand_left.play("idle")
 		pumpkin_head.play("idle")
 		head_anim = "idle"

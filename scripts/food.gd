@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var arrow: AnimatedSprite2D = $Arrow
+@onready var arrow: AnimatedSprite2D = $Area/Arrow
 @onready var area: Area2D = $Area
 
 @onready var plate = get_node("/root/Game/Level/Foreground/Top/FoodChoice/Plate")
@@ -16,7 +16,7 @@ func mouse_entered() -> void:
 	if Global.game_state == "choice":
 		if Global.can_pick:
 			arrow.show()
-	else:
+	elif Global.is_bar == true:
 		arrow.show()
 
 func mouse_exited() -> void:
@@ -28,21 +28,29 @@ func input_event(_viewport, event, _shape_idx) -> void:
 		if Global.is_bar:
 			AudioManager.play_food_sound(name)
 		elif Global.game_state == "choice" and Global.can_pick:
+			Global.can_pick = false
 			Global.user_pick = name.to_lower()
 			move_to_plate()
 
 func move_to_plate():
+	Global.can_pick = false
+	mouse_exited()
 	var tween = create_tween()
 	tween.tween_property(self, "position", plate.global_position, 0.2)
 
 func move_to_mouth():
+	Global.can_pick = false
+	mouse_exited()
+	z_index -= 1
 	var tween = create_tween()
 	tween.tween_property(self, "position", mouth.global_position, 0.2)
 	await tween.finished
 	queue_free()
 
 func move_to_trash():
+	Global.can_pick = false
+	mouse_exited()
 	var tween = create_tween()
-	tween.tween_property(self, "position", trash.global_position, 0.2)
+	tween.tween_property(self, "position", trash.global_position, 0.4)
 	await tween.finished
 	queue_free()

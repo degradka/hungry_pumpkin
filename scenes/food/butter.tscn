@@ -59,11 +59,11 @@ animations = [{
 }]
 
 [node name="Butter" type="Node2D"]
-position = Vector2(264, 192)
 scale = Vector2(1.8, 1.8)
 script = ExtResource("1_gowhr")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -6)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_noaca")
@@ -71,10 +71,10 @@ texture = ExtResource("2_noaca")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 shape = SubResource("RectangleShape2D_204p4")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(1, -16)
-rotation = 3.19395
+rotation = -3.08924
 scale = Vector2(1.3, 0.25)
 sprite_frames = SubResource("SpriteFrames_7xxje")
 autoplay = "default"

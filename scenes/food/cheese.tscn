@@ -59,11 +59,11 @@ animations = [{
 }]
 
 [node name="Cheese" type="Node2D"]
-position = Vector2(552, 437)
 scale = Vector2(1.6, 1.6)
 script = ExtResource("1_taaot")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -8)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_nl5qb")
@@ -72,7 +72,7 @@ texture = ExtResource("2_nl5qb")
 scale = Vector2(0.999998, 0.999998)
 shape = SubResource("RectangleShape2D_vrid1")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(-47, -4)
 rotation = 1.65806

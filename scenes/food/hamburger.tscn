@@ -59,11 +59,11 @@ animations = [{
 }]
 
 [node name="Hamburger" type="Node2D"]
-position = Vector2(382, 147)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_da48a")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -18)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_s114h")
@@ -73,9 +73,9 @@ position = Vector2(-3, 4)
 rotation = 0.724312
 shape = SubResource("RectangleShape2D_wikfv")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
-position = Vector2(6, -33)
+position = Vector2(6.00002, -33)
 rotation = -2.93216
 scale = Vector2(1, 0.65)
 sprite_frames = SubResource("SpriteFrames_7xxje")

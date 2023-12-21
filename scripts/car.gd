@@ -8,7 +8,7 @@ func _ready():
 	randomize()
 	timer.wait_time = randi_range(5, 20)
 
-func start_timer():
+func start_animation_timer():
 	timer.start()
 
 func _on_timer_timeout():

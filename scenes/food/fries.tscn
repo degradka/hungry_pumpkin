@@ -59,11 +59,11 @@ animations = [{
 }]
 
 [node name="Fries" type="Node2D"]
-position = Vector2(450, 170)
 scale = Vector2(1.7, 1.7)
 script = ExtResource("1_wosgq")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -15)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_82v5k")
@@ -72,7 +72,7 @@ texture = ExtResource("2_82v5k")
 rotation = 0.733038
 shape = SubResource("RectangleShape2D_ogo8m")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(-25, -19)
 rotation = 2.26893

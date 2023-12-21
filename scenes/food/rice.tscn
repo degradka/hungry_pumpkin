@@ -59,11 +59,11 @@ animations = [{
 }]
 
 [node name="Rice" type="Node2D"]
-position = Vector2(120, 432)
 scale = Vector2(1.6, 1.6)
 script = ExtResource("1_ys2be")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -10)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_jw2x4")
@@ -72,7 +72,7 @@ texture = ExtResource("2_jw2x4")
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_nkcef")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(-41, 9)
 rotation = 1.36136

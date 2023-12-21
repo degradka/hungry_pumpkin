@@ -59,11 +59,11 @@ animations = [{
 }]
 
 [node name="Pizza" type="Node2D"]
-position = Vector2(280, 305)
 scale = Vector2(1.6, 1.6)
 script = ExtResource("1_c3fwp")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -10)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_10cym")
@@ -72,7 +72,7 @@ texture = ExtResource("2_10cym")
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_lsq55")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(-8, -21)
 rotation = 2.79253

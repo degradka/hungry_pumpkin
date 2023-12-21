@@ -59,11 +59,11 @@ animations = [{
 }]
 
 [node name="OrangeJuice" type="Node2D"]
-position = Vector2(603, 325)
 scale = Vector2(1.6, 1.6)
 script = ExtResource("1_v3g4u")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -25)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_r54o3")
@@ -73,7 +73,7 @@ position = Vector2(-8, 0)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_o5enx")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(-27, 0)
 rotation = 1.5708

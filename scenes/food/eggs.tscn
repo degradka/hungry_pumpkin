@@ -60,7 +60,6 @@ animations = [{
 }]
 
 [node name="Eggs" type="Node2D"]
-position = Vector2(73, 369)
 script = ExtResource("1_vxsbr")
 
 [node name="Area" type="Area2D" parent="."]
@@ -73,7 +72,7 @@ position = Vector2(-1, -2)
 rotation = 1.13446
 shape = SubResource("CapsuleShape2D_wedub")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(58, -12)
 rotation = -1.81514

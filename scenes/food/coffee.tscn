@@ -62,11 +62,11 @@ animations = [{
 }]
 
 [node name="Coffee" type="Node2D"]
-position = Vector2(170, 309)
 scale = Vector2(1.1, 1.1)
 script = ExtResource("1_kabih")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(7, -26)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_1q84r")
@@ -79,7 +79,7 @@ shape = SubResource("RectangleShape2D_5ewwy")
 position = Vector2(27, 0)
 shape = SubResource("RectangleShape2D_adp2l")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(-58, 6)
 rotation = 1.44862

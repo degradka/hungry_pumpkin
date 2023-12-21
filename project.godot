@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Hungry Pumpkin"
 config/description="A clone of the infamous flash game"
-config/version="0.0.3"
+config/version="0.0.4"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)

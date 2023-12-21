@@ -59,11 +59,11 @@ animations = [{
 }]
 
 [node name="IceWater" type="Node2D"]
-position = Vector2(656, 352)
 scale = Vector2(1.6, 1.6)
 script = ExtResource("1_g4jfp")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -25)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_jfkmh")
@@ -72,7 +72,7 @@ texture = ExtResource("2_jfkmh")
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_i8kxf")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 position = Vector2(-28, 0)
 rotation = 1.5708

@@ -60,11 +60,11 @@ animations = [{
 }]
 
 [node name="Fish" type="Node2D"]
-position = Vector2(477, 306)
 scale = Vector2(1.7, 1.7)
 script = ExtResource("1_2ub0d")
 
 [node name="Area" type="Area2D" parent="."]
+position = Vector2(0, -7)
 
 [node name="Sprite" type="Sprite2D" parent="Area"]
 texture = ExtResource("2_spb70")
@@ -73,10 +73,10 @@ texture = ExtResource("2_spb70")
 rotation = 1.36136
 shape = SubResource("CapsuleShape2D_l4k66")
 
-[node name="Arrow" type="AnimatedSprite2D" parent="."]
+[node name="Arrow" type="AnimatedSprite2D" parent="Area"]
 visible = false
 z_index = 1
-position = Vector2(-6, -27)
+position = Vector2(-6.00003, -27)
 rotation = 2.89725
 scale = Vector2(0.6, 0.3)
 sprite_frames = SubResource("SpriteFrames_7xxje")
