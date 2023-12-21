@@ -28,7 +28,7 @@ Contributions are welcome! Whether you're fixing a bug, enhancing features, or j
 
 ## License
 
-This project is licensed under the [GNU General Public License v3.0](LICENSE.md) - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the [GNU General Public License v3.0](LICENSE) - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
@@ -37,9 +37,9 @@ Special thanks to Pumpkin Productions for the original masterpiece, forever embe
 
 ## TODO
 
-- [ ] Add support for Web.
+- [*] Add support for Web.
 - [ ] Add support for Android.
-- [ ] Fix mess and clean the code.
-- [ ] Fix Mr. Pumpkin food voicelines still queueing after animation is finished.
+- [] Fix mess and clean the code.
+- [*] Fix Mr. Pumpkin food voicelines still queueing after animation is finished.
 
 Feel free to pick up any tasks from the TODO list or suggest new ideas!
