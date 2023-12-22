@@ -1,4 +1,4 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
-
+# Detect gdscript correctly
 *.gd linguist-language=gdscript
