@@ -4,7 +4,7 @@
     Welcome to the repository for the revival of the classic flash game "Hungry Pumpkin"!
     <br><br>
     <a href="https://github.com/degradka/hungry_pumpkin">
-        <img src="git_assets/hungrypumpkin_screenshot.png" width="300" alt="Hungry Pumpkin game screenshot">
+        <img src="git-assets/hungrypumpkin_screenshot.jpg" width="500" alt="Hungry Pumpkin game screenshot">
     </a>
 </p>
 
