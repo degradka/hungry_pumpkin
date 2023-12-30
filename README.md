@@ -48,7 +48,7 @@ Special thanks to Pumpkin Productions for the original masterpiece, forever embe
 ## TODO
 
 - [x] Add support for Web.
-- [ ] Add support for Android.
+- [x] Add support for Android.
 - [x] Fix mess and clean the code.
 - [x] Fix Mr. Pumpkin food voicelines still queueing after animation is finished.
 
