@@ -24,13 +24,20 @@ While the original author remains elusive, credit is attributed to Pumpkin Produ
 
 ### Play in browser
 1. Visit the [Itch.io Page](https://degradka.itch.io/hungry-pumpkin).
-2. Click the run game button.
+2. Click the `run game` button.
 
-### Installation
+### Windows/Linux
 1. Visit the [Releases Page](https://github.com/degradka/hungry_pumpkin/releases).
 2. Download the appropriate version for your system (Windows/Linux, x64/x32).
 3. Unzip the downloaded file.
 4. Run the executable.
+
+### Android
+1. Visit the [Releases Page](https://github.com/degradka/hungry_pumpkin/releases).
+2. Download the apk file through your device.
+3. Run the apk file and press `install`
+4. You might be warned about the app being suspicious, ignore the warning and press `install anyway`
+5. Run the installed app.
 
 ## Contribution
 
