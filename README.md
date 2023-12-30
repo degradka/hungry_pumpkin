@@ -22,6 +22,10 @@ While the original author remains elusive, credit is attributed to Pumpkin Produ
 
 ## Getting Started
 
+### Play in browser
+1. Visit the [Itch.io Page](https://degradka.itch.io/hungry-pumpkin).
+2. Click the run game button.
+
 ### Installation
 1. Visit the [Releases Page](https://github.com/degradka/hungry_pumpkin/releases).
 2. Download the appropriate version for your system (Windows/Linux, x64/x32).
